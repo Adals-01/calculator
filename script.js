@@ -12,7 +12,11 @@ function clickCalculate() {
     let firstnumber = document.getElementById("firstnumber").value;
     let secondnumber = document.getElementById("secondnumber").value;
     let operator = document.getElementById("operator").value;
-    console.log(firstnumber, secondnumber, operator);
+
+    //use previous result as new firstnumber
+    if (result !== undefined) {
+      firstnumber = result;
+    }
 
     if (operator === "add") {
       total = parseInt(firstnumber) + parseInt(secondnumber);
@@ -23,14 +27,12 @@ function clickCalculate() {
     } else if (operator === "div") {
       total = parseInt(firstnumber) / parseInt(secondnumber);
     }
-    console.log(total);
+
     checkRounded();
   });
 }
 
 function checkRounded() {
-  console.log("checkRounded");
-
   if ((document.getElementById("doround").value = true)) {
     let roundTo = document.getElementById("decimals").value;
     result = total.toFixed(roundTo);
@@ -42,12 +44,12 @@ function writeResult() {
   const ul = document.getElementById("results");
   var li = document.createElement("li");
   li.appendChild(document.createTextNode(result));
+  firstnumber.value = result;
   ul.appendChild(li);
 }
 
 function clickClear() {
   document.getElementById("clear").addEventListener("click", () => {
     document.getElementById("results").innerHTML = "";
-    console.log("clearChildren");
   });
 }
