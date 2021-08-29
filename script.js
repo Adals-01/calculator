@@ -12,12 +12,11 @@ function clickCalculate() {
     let firstnumber = document.getElementById("firstnumber").value;
     let secondnumber = document.getElementById("secondnumber").value;
     let operator = document.getElementById("operator").value;
-
     //use previous result as new firstnumber
     if (result !== undefined) {
       firstnumber = result;
     }
-
+    //calculate
     if (operator === "add") {
       total = parseInt(firstnumber) + parseInt(secondnumber);
     } else if (operator === "sub") {
@@ -27,7 +26,6 @@ function clickCalculate() {
     } else if (operator === "div") {
       total = parseInt(firstnumber) / parseInt(secondnumber);
     }
-
     checkRounded();
   });
 }
